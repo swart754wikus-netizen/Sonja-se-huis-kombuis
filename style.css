@@ -78,9 +78,9 @@ header {
 .logo-img {
   height: 84px;
   width: 84px;
-  border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
   flex-shrink: 0;
+  filter: drop-shadow(0 3px 8px rgba(90,62,54,0.25));
 }
 
 footer .logo-img {
