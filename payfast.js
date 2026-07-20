@@ -75,9 +75,11 @@ function getWhatsAppOrderLink() {
   const raw = localStorage.getItem(LAST_ORDER_KEY);
   if (!raw) return null;
 
-  const { cart, details, total } = JSON.parse(raw);
+  const { cart, details, total, paymentId } = JSON.parse(raw);
   const lines = [
     'New order — Sonja se Huis Kombuis',
+    'Paid via PayFast',
+    `Order reference: ${paymentId}`,
     '',
     ...cart.map(i => `${i.qty}x ${i.name} — ${formatR(i.price * i.qty)}`),
     '',
