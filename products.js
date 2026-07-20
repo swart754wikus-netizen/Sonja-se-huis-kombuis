@@ -10,10 +10,8 @@ const PRODUCTS = [
   { id: 'growwe-bosbessiebeskuit', name: 'Growwe Bosbessiebeskuit', unit: null, description: 'Coarse blueberry rusks.', price: 78, icon: '🥖', photo: 'assets/products/growwe-bosbessiebeskuit.jpg', category: 'Beskuit' },
 ];
 
-function renderProducts() {
-  const grid = document.getElementById('product-grid');
-  if (!grid) return;
-  grid.innerHTML = PRODUCTS.map(p => `
+function productCardHTML(p) {
+  return `
     <div class="product-card">
       <div class="product-thumb">${p.photo ? `<img src="${p.photo}" alt="${p.name}" loading="lazy">` : p.icon}</div>
       <div class="product-body">
@@ -28,7 +26,19 @@ function renderProducts() {
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+}
+
+function renderProducts() {
+  const grid = document.getElementById('product-grid');
+  if (grid) grid.innerHTML = PRODUCTS.map(productCardHTML).join('');
+
+  const featured = document.getElementById('featured-grid');
+  if (featured) {
+    const ids = ['karringmelkbeskuit', 'gemmerkoekies', 'romany-creamkoekies', 'growwe-bosbessiebeskuit'];
+    const items = ids.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+    featured.innerHTML = items.map(productCardHTML).join('');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', renderProducts);
