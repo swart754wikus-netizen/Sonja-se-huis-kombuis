@@ -590,11 +590,13 @@ section { padding: 64px 24px; }
 /* ===== Footer ===== */
 footer {
   background: var(--blush);
-  padding: 40px 24px;
+  padding: 48px 24px;
   text-align: center;
   color: var(--brown-light);
-  font-size: 0.9rem;
+  font-size: 1.15rem;
 }
+
+footer p { margin-bottom: 8px; }
 
 footer .brand { margin-bottom: 8px; display: inline-block; }
 
