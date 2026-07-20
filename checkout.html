@@ -43,7 +43,9 @@
     <h3>Thank you for your order!</h3>
     <p>Your payment was submitted to PayFast. We'll confirm your order and get your treats baked and on the way.</p>
     <br>
-    <a href="products.html" class="btn">Continue Shopping</a>
+    <a href="#" id="whatsapp-order-btn" class="btn" style="background:#25D366;" target="_blank" rel="noopener">Send Order to WhatsApp</a>
+    <br><br>
+    <a href="products.html" class="btn btn-outline">Continue Shopping</a>
   </div>
 
   <div id="checkout-cancelled" class="confirmation" style="display:none;">
@@ -52,6 +54,14 @@
     <p>No problem — your basket has been saved. You can try checking out again whenever you're ready.</p>
     <br>
     <a href="checkout.html" class="btn">Back to Checkout</a>
+  </div>
+
+  <div id="checkout-unverified" class="confirmation" style="display:none;">
+    <div class="icon">❓</div>
+    <h3>We couldn't verify this order</h3>
+    <p>This page didn't come from a completed PayFast checkout. If you did complete a payment, please contact us directly at <a href="tel:+27828269874">082 826 9874</a> so we can confirm it.</p>
+    <br>
+    <a href="products.html" class="btn">Back to Products</a>
   </div>
 
   <div id="checkout-main" class="checkout-layout">
@@ -171,16 +181,23 @@ function showState(state) {
   document.getElementById('checkout-empty').style.display = state === 'empty' ? 'block' : 'none';
   document.getElementById('checkout-success').style.display = state === 'success' ? 'block' : 'none';
   document.getElementById('checkout-cancelled').style.display = state === 'cancelled' ? 'block' : 'none';
+  document.getElementById('checkout-unverified').style.display = state === 'unverified' ? 'block' : 'none';
   document.getElementById('checkout-main').style.display = state === 'main' ? 'grid' : 'none';
 }
 
 const params = new URLSearchParams(location.search);
 const status = params.get('status');
 
-if (status === 'success') {
+if (status === 'success' && isPendingPaymentValid(params.get('pid'))) {
   showState('success');
+  const waLink = getWhatsAppOrderLink();
+  const waBtn = document.getElementById('whatsapp-order-btn');
+  if (waLink && waBtn) waBtn.href = waLink;
+  clearPendingPayment();
   localStorage.removeItem(CART_KEY);
   renderCartDrawer();
+} else if (status === 'success') {
+  showState('unverified');
 } else if (status === 'cancelled') {
   showState('cancelled');
 } else if (getCart().length === 0) {
