@@ -20,8 +20,8 @@ function submitToPayfast(cart, details) {
   const fields = {
     merchant_id: PAYFAST_CONFIG.merchant_id,
     merchant_key: PAYFAST_CONFIG.merchant_key,
-    return_url: `${location.origin}${location.pathname.replace('checkout.html', '')}checkout.html?status=success`,
-    cancel_url: `${location.origin}${location.pathname.replace('checkout.html', '')}checkout.html?status=cancelled`,
+    return_url: `${location.origin}${location.pathname}?status=success`,
+    cancel_url: `${location.origin}${location.pathname}?status=cancelled`,
     name_first: details.firstName,
     name_last: details.lastName,
     email_address: details.email,
