@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Sonja se Huis Kombuis</title>
+<meta name="description" content="Complete your order from Sonja se Huis Kombuis.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23D9825A'/><text x='16' y='23' font-family='sans-serif' font-weight='800' font-size='18' fill='white' text-anchor='middle'>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand">Sonja se <span>Huis Kombuis</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+      <button class="basket-btn" onclick="toggleCart()">🧺 Basket <span class="basket-count">0</span></button>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="section-title">
+    <h2>Checkout</h2>
+    <p>Confirm your order and delivery address, then pay securely with PayFast.</p>
+  </div>
+
+  <div id="checkout-empty" class="confirmation" style="display:none;">
+    <div class="icon">🧺</div>
+    <h3>Your basket is empty</h3>
+    <p>Add some rusks or cookies before checking out.</p>
+    <br>
+    <a href="products.html" class="btn">Shop Products</a>
+  </div>
+
+  <div id="checkout-success" class="confirmation" style="display:none;">
+    <div class="icon">✅</div>
+    <h3>Thank you for your order!</h3>
+    <p>Your payment was submitted to PayFast. We'll confirm your order and get your treats baked and on the way.</p>
+    <br>
+    <a href="products.html" class="btn">Continue Shopping</a>
+  </div>
+
+  <div id="checkout-cancelled" class="confirmation" style="display:none;">
+    <div class="icon">⚠️</div>
+    <h3>Payment cancelled</h3>
+    <p>No problem — your basket has been saved. You can try checking out again whenever you're ready.</p>
+    <br>
+    <a href="checkout.html" class="btn">Back to Checkout</a>
+  </div>
+
+  <div id="checkout-main" class="checkout-layout">
+    <div class="summary-card">
+      <h3 style="margin-bottom:16px;">Order Summary</h3>
+      <div id="summary-items"></div>
+      <div class="summary-total">
+        <span>Total</span>
+        <span id="summary-total">R0.00</span>
+      </div>
+    </div>
+
+    <form class="form-card" id="checkout-form" style="max-width:none;">
+      <h3 style="margin-bottom:16px;">Delivery Details</h3>
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" required>
+        </div>
+        <div class="form-row">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="checkout-email">Email</label>
+        <input type="email" id="checkout-email" required>
+      </div>
+      <div class="form-row">
+        <label for="checkout-phone">Phone</label>
+        <input type="tel" id="checkout-phone" required>
+      </div>
+      <div class="form-row">
+        <label for="street">Street Address</label>
+        <input type="text" id="street" required>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label for="suburb">Suburb / Town</label>
+          <input type="text" id="suburb" required>
+        </div>
+        <div class="form-row">
+          <label for="postal-code">Postal Code</label>
+          <input type="text" id="postal-code" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="province">Province</label>
+        <select id="province" required>
+          <option value="">Select a province</option>
+          <option>Eastern Cape</option>
+          <option>Free State</option>
+          <option>Gauteng</option>
+          <option>KwaZulu-Natal</option>
+          <option>Limpopo</option>
+          <option>Mpumalanga</option>
+          <option>Northern Cape</option>
+          <option>North West</option>
+          <option>Western Cape</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="notes">Delivery Notes (optional)</label>
+        <textarea id="notes" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-block">Pay with PayFast</button>
+      <div class="payfast-badge">🔒 Secure payment powered by PayFast</div>
+      <p class="note">This site is currently connected to PayFast's sandbox for testing. Live payments will be enabled once real PayFast merchant details are added.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">Sonja se <span style="color:#D9825A">Huis Kombuis</span></div>
+  <p>&copy; <span id="year"></span> Sonja se Huis Kombuis. All rights reserved.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h3>Your Basket</h3>
+    <button class="cart-close" onclick="closeCart()">&times;</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total">R0.00</span>
+    </div>
+    <a href="checkout.html" class="btn btn-block">Checkout</a>
+  </div>
+</aside>
+
+<script src="cart.js"></script>
+<script src="payfast.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function renderSummary() {
+  const cart = getCart();
+  const itemsEl = document.getElementById('summary-items');
+  const totalEl = document.getElementById('summary-total');
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="summary-item">
+      <span>${item.qty} × ${item.name}</span>
+      <span>${formatR(item.price * item.qty)}</span>
+    </div>
+  `).join('');
+  totalEl.textContent = formatR(cartTotal(cart));
+}
+
+function showState(state) {
+  document.getElementById('checkout-empty').style.display = state === 'empty' ? 'block' : 'none';
+  document.getElementById('checkout-success').style.display = state === 'success' ? 'block' : 'none';
+  document.getElementById('checkout-cancelled').style.display = state === 'cancelled' ? 'block' : 'none';
+  document.getElementById('checkout-main').style.display = state === 'main' ? 'grid' : 'none';
+}
+
+const params = new URLSearchParams(location.search);
+const status = params.get('status');
+
+if (status === 'success') {
+  showState('success');
+  localStorage.removeItem(CART_KEY);
+  renderCartDrawer();
+} else if (status === 'cancelled') {
+  showState('cancelled');
+} else if (getCart().length === 0) {
+  showState('empty');
+} else {
+  showState('main');
+  renderSummary();
+}
+
+document.getElementById('checkout-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const cart = getCart();
+  if (cart.length === 0) return;
+
+  const details = {
+    firstName: document.getElementById('first-name').value,
+    lastName: document.getElementById('last-name').value,
+    email: document.getElementById('checkout-email').value,
+    phone: document.getElementById('checkout-phone').value,
+    street: document.getElementById('street').value,
+    suburb: document.getElementById('suburb').value,
+    postalCode: document.getElementById('postal-code').value,
+    province: document.getElementById('province').value,
+    notes: document.getElementById('notes').value,
+  };
+
+  submitToPayfast(cart, details);
+});
+</script>
+</body>
+</html>
