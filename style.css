@@ -251,11 +251,19 @@ section { padding: 64px 24px; }
 }
 
 .product-thumb {
-  height: 140px;
+  height: 170px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+  background: linear-gradient(160deg, var(--blush), var(--peach));
+  overflow: hidden;
+}
+
+.product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .product-body { padding: 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
