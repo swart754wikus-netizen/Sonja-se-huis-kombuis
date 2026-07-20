@@ -1,11 +1,11 @@
 /* ===== Sonja se Huis Kombuis — product list (edit prices/items here) ===== */
 
 const PRODUCTS = [
-  { id: 'crunchies', name: 'Crunchies', unit: '1 Dozen', description: 'Home-baked crunchies, sold per dozen.', price: 35, icon: '🍪', photo: 'assets/products/crunchies.jpg', category: 'Cookies' },
-  { id: 'gemmerkoekies', name: 'Ginger Cookies', unit: '1 Dozen', description: 'Classic spiced ginger cookies, sold per dozen.', price: 35, icon: '🍪', photo: 'assets/products/gemmerkoekies.jpg', category: 'Cookies' },
-  { id: 'vlakoekies', name: 'Custard Cookies', unit: '1 Dozen', description: 'Soft custard-cream sandwich cookies, sold per dozen.', price: 50, icon: '🍪', photo: 'assets/products/vlakoekies.jpg', category: 'Cookies' },
-  { id: 'kondensmelkkoekies', name: 'Condensed Milk Cookies', unit: '1 Dozen', description: 'Rich condensed milk cookies, sold per dozen.', price: 55, icon: '🍪', photo: 'assets/products/kondensmelkkoekies.jpg', category: 'Cookies' },
-  { id: 'romany-creamkoekies', name: 'Romany Cream Cookies', unit: '1 Dozen', description: 'Chocolate-cream filled Romany creams, sold per dozen.', price: 55, icon: '🍪', photo: 'assets/products/romany-creamkoekies.jpg', category: 'Cookies' },
+  { id: 'crunchies', name: 'Crunchies', unit: 'Bag', description: 'Home-baked crunchies, sold per bag.', price: 35, icon: '🍪', photo: 'assets/products/crunchies.jpg', category: 'Cookies' },
+  { id: 'gemmerkoekies', name: 'Ginger Cookies', unit: 'Bag', description: 'Classic spiced ginger cookies, sold per bag.', price: 35, icon: '🍪', photo: 'assets/products/gemmerkoekies.jpg', category: 'Cookies' },
+  { id: 'vlakoekies', name: 'Custard Cookies', unit: 'Bag', description: 'Soft custard-cream sandwich cookies, sold per bag.', price: 50, icon: '🍪', photo: 'assets/products/vlakoekies.jpg', category: 'Cookies' },
+  { id: 'kondensmelkkoekies', name: 'Condensed Milk Cookies', unit: 'Bag', description: 'Rich condensed milk cookies, sold per bag.', price: 55, icon: '🍪', photo: 'assets/products/kondensmelkkoekies.jpg', category: 'Cookies' },
+  { id: 'romany-creamkoekies', name: 'Romany Cream Cookies', unit: 'Bag', description: 'Chocolate-cream filled Romany creams, sold per bag.', price: 55, icon: '🍪', photo: 'assets/products/romany-creamkoekies.jpg', category: 'Cookies' },
   { id: 'karringmelkbeskuit', name: 'Buttermilk Rusks', unit: 'Bag', description: 'Traditional oven-dried buttermilk rusks.', price: 65, icon: '🥖', photo: 'assets/products/karringmelkbeskuit.jpg', category: 'Rusks' },
   { id: 'growwe-bosbessiebeskuit', name: 'Coarse Blueberry Rusks', unit: 'Bag', description: 'Hearty rusks packed with blueberries.', price: 78, icon: '🥖', photo: 'assets/products/growwe-bosbessiebeskuit.jpg', category: 'Rusks' },
 ];
