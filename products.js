@@ -3,7 +3,6 @@
 const PRODUCTS = [
   { id: 'crunchies', name: 'Crunchies', unit: '1 Dosyn', description: 'Home-baked crunchies, sold per dozen.', price: 35, icon: '🍪', photo: 'assets/products/crunchies.jpg', category: 'Koekies' },
   { id: 'gemmerkoekies', name: 'Gemmerkoekies', unit: '1 Dosyn', description: 'Ginger cookies, sold per dozen.', price: 35, icon: '🍪', photo: 'assets/products/gemmerkoekies.jpg', category: 'Koekies' },
-  { id: 'koffiekoekies', name: 'Koffiekoekies', unit: '1 Dosyn', description: 'Coffee cookies, sold per dozen.', price: 40, icon: '🍪', category: 'Koekies' },
   { id: 'vlakoekies', name: 'Vlakoekies', unit: '1 Dosyn', description: 'Custard cookies, sold per dozen.', price: 50, icon: '🍪', photo: 'assets/products/vlakoekies.jpg', category: 'Koekies' },
   { id: 'kondensmelkkoekies', name: 'Kondensmelkkoekies', unit: '1 Dosyn', description: 'Condensed milk cookies, sold per dozen.', price: 55, icon: '🍪', photo: 'assets/products/kondensmelkkoekies.jpg', category: 'Koekies' },
   { id: 'romany-creamkoekies', name: 'Romany Creamkoekies', unit: '1 Dosyn', description: 'Romany cream cookies, sold per dozen.', price: 55, icon: '🍪', photo: 'assets/products/romany-creamkoekies.jpg', category: 'Koekies' },
