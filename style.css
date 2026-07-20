@@ -599,6 +599,8 @@ footer {
 footer .brand { margin-bottom: 8px; display: inline-block; }
 
 .credit { font-size: 0.78rem; opacity: 0.75; margin-top: 6px; }
+.credit a { color: inherit; text-decoration: underline; }
+.credit a:hover { color: var(--terracotta-dark); }
 
 /* ===== Responsive ===== */
 @media (max-width: 760px) {
