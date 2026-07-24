@@ -71,6 +71,14 @@
     <div class="summary-card">
       <h3 style="margin-bottom:16px;">Order Summary</h3>
       <div id="summary-items"></div>
+      <div class="summary-item">
+        <span>Subtotal</span>
+        <span id="summary-subtotal">R0.00</span>
+      </div>
+      <div class="summary-item">
+        <span>Shipping</span>
+        <span id="summary-shipping">R0.00</span>
+      </div>
       <div class="summary-total">
         <span>Total</span>
         <span id="summary-total">R0.00</span>
@@ -170,6 +178,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function renderSummary() {
   const cart = getCart();
   const itemsEl = document.getElementById('summary-items');
+  const subtotalEl = document.getElementById('summary-subtotal');
+  const shippingEl = document.getElementById('summary-shipping');
   const totalEl = document.getElementById('summary-total');
   itemsEl.innerHTML = cart.map(item => `
     <div class="summary-item">
@@ -177,7 +187,10 @@ function renderSummary() {
       <span>${formatR(item.price * item.qty)}</span>
     </div>
   `).join('');
-  totalEl.textContent = formatR(cartTotal(cart));
+  const subtotal = cartTotal(cart);
+  subtotalEl.textContent = formatR(subtotal);
+  shippingEl.textContent = formatR(SHIPPING_FEE);
+  totalEl.textContent = formatR(subtotal + SHIPPING_FEE);
 }
 
 function showState(state) {

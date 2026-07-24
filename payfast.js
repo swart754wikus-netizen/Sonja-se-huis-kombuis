@@ -21,12 +21,13 @@ const LAST_ORDER_KEY = 'sonja_last_order';
 const PENDING_PAYMENT_KEY = 'sonja_pending_payment_id';
 
 function submitToPayfast(cart, details) {
-  const total = cartTotal(cart).toFixed(2);
+  const subtotal = cartTotal(cart);
+  const total = (subtotal + SHIPPING_FEE).toFixed(2);
   const itemSummary = cart.map(i => `${i.qty}x ${i.name}`).join(', ');
   const address = `${details.street}, ${details.suburb}, ${details.postalCode}, ${details.province}`;
   const paymentId = 'SHK-' + Date.now();
 
-  localStorage.setItem(LAST_ORDER_KEY, JSON.stringify({ cart, details, total, paymentId }));
+  localStorage.setItem(LAST_ORDER_KEY, JSON.stringify({ cart, details, total, shipping: SHIPPING_FEE, paymentId }));
   localStorage.setItem(PENDING_PAYMENT_KEY, paymentId);
 
   const fields = {
@@ -75,7 +76,8 @@ function getWhatsAppOrderLink() {
   const raw = localStorage.getItem(LAST_ORDER_KEY);
   if (!raw) return null;
 
-  const { cart, details, total, paymentId } = JSON.parse(raw);
+  const { cart, details, total, shipping, paymentId } = JSON.parse(raw);
+  const subtotal = cartTotal(cart);
   const lines = [
     'New order — Sonja se Huis Kombuis',
     'Paid via PayFast',
@@ -83,6 +85,8 @@ function getWhatsAppOrderLink() {
     '',
     ...cart.map(i => `${i.qty}x ${i.name} — ${formatR(i.price * i.qty)}`),
     '',
+    `Subtotal: ${formatR(subtotal)}`,
+    `Shipping: ${formatR(shipping)}`,
     `Total: ${formatR(Number(total))}`,
     '',
     `Name: ${details.firstName} ${details.lastName}`,

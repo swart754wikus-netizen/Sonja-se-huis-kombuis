@@ -1,6 +1,7 @@
 /* ===== Sonja se Huis Kombuis — shopping basket ===== */
 
 const CART_KEY = 'sonja_cart';
+const SHIPPING_FEE = 180;
 
 function getCart() {
   try {
