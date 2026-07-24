@@ -15,12 +15,15 @@
 <header>
   <div class="nav">
     <a href="index.html" class="brand"><img src="assets/logo-small.png" alt="" class="logo-img"><span class="sr-only">Sonja se Huis Kombuis</span></a>
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="products.html">Products</a>
-      <a href="contact.html">Contact</a>
-      <button class="basket-btn" onclick="toggleCart()">🧺 Basket <span class="basket-count">0</span></button>
-    </nav>
+    <div class="nav-right">
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="basket-btn" onclick="toggleCart()">&#129386; Basket <span class="basket-count">0</span></button>
+      <button class="nav-toggle" aria-label="Menu" onclick="toggleMobileNav()">&#9776;</button>
+    </div>
   </div>
 </header>
 

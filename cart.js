@@ -102,4 +102,15 @@ function toggleCart() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', renderCartDrawer);
+function toggleMobileNav() {
+  document.getElementById('nav-links')?.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCartDrawer();
+  document.querySelectorAll('#nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav-links')?.classList.remove('open');
+    });
+  });
+});
